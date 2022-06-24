@@ -372,8 +372,16 @@ func NewClient(projectName string, authJSON []byte) (Client, error) {
 	return ClientCommon(ctx, projectName, creds)
 }
 
-func NewClientGCE(projectName string, creds *google.Credentials) (Client, error) {
+func NewClientGCE(projectName string) (Client, error) {
 	ctx := context.TODO()
+	var err error
+
+	// We should specify all the required scopes when initializing
+	creds, err := google.FindDefaultCredentials(context.TODO(), compute.CloudPlatformScope)
+	if err != nil {
+		return nil, err
+	}
+
 	return ClientCommon(ctx, projectName, creds)
 }
 

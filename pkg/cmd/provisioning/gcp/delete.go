@@ -115,7 +115,7 @@ func deleteCmd(cmd *cobra.Command, args []string) {
 		}
 
 	} else {
-		gcpClient, err = gcp.NewClientGCE(DeleteOpts.Project, creds)
+		gcpClient, err = gcp.NewClientGCE(DeleteOpts.Project)
 		if err != nil {
 			log.Fatalf("Failed to initiate GCP client: %s", err)
 		}

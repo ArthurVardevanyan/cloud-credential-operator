@@ -55,7 +55,7 @@ func createWorkloadIdentityPoolCmd(cmd *cobra.Command, args []string) {
 		}
 
 	} else {
-		gcpClient, err = gcp.NewClientGCE(CreateWorkloadIdentityPoolOpts.Project, creds)
+		gcpClient, err = gcp.NewClientGCE(CreateWorkloadIdentityPoolOpts.Project)
 		if err != nil {
 			log.Fatalf("Failed to initiate GCP client: %s", err)
 		}
